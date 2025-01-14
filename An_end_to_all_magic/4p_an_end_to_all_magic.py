@@ -58,6 +58,10 @@ class Player(pygame.sprite.Sprite):
 		self.jump_counter = True
 		self.counter = True
 		self.start_time = 0
+		self.drag = False
+		self.counter2 = True
+		self.drag_dir = 0
+		self.start_time2 = 0
 
 	def jump(self):
 		if self.dir_num == 1:
@@ -710,6 +714,8 @@ player4 = Player4()
 players.add(player1, player2, player3, player4)
 boss = Boss()
 all_sprites.add(player1, player2, player3, player4, boss)
+counter = True
+start_time = pygame.time.get_ticks()
 invo_talk_sound.play()
 
 while running:
@@ -723,6 +729,8 @@ while running:
 		players.add(player1, player2, player3, player4)
 		boss = Boss()
 		all_sprites.add(player1, player2, player3, player4, boss)
+		counter = True
+		start_time = pygame.time.get_ticks()
 		invo_talk_sound.play()
 	
 	if game_over2:
@@ -735,6 +743,8 @@ while running:
 		players.add(player1, player2, player3, player4)
 		boss = Boss()
 		all_sprites.add(player1, player2, player3, player4, boss)
+		counter = True
+		start_time = pygame.time.get_ticks()
 		invo_talk_sound.play()
 
 	if game_over3:
@@ -747,6 +757,8 @@ while running:
 		players.add(player1, player2, player3, player4)
 		boss = Boss()
 		all_sprites.add(player1, player2, player3, player4, boss)
+		counter = True
+		start_time = pygame.time.get_ticks()
 		invo_talk_sound.play()
 
 	if game_over4:
@@ -759,6 +771,8 @@ while running:
 		players.add(player1, player2, player3, player4)
 		boss = Boss()
 		all_sprites.add(player1, player2, player3, player4, boss)
+		counter = True
+		start_time = pygame.time.get_ticks()
 		invo_talk_sound.play()
 
 	if game_over5:
@@ -771,6 +785,7 @@ while running:
 		players.add(player1, player2, player3, player4)
 		boss = Boss()
 		all_sprites.add(player1, player2, player3, player4, boss)
+		start_time = pygame.time.get_ticks()
 		invo_talk_sound.play()
 
 	clock.tick(60)
@@ -841,18 +856,21 @@ while running:
 		if player1 in players:
 			game_over1 = True
 			player1.kill()
-		if player2 in players:
+		elif player2 in players:
 			game_over2 = True
 			player2.kill()
-		if player3 in players:
+		elif player3 in players:
 			game_over3 = True
 			player3.kill()
-		if player4 in players:
+		elif player4 in players:
 			game_over4 = True
 			player4.kill()
 		boss.kill()
-	elif len(players) == 0:
-		game_over5 = True
+		counter = False
+	if counter:
+		if len(players) == 0:
+			boss.kill()
+			game_over5 = True
 	# Checar colisiones - boss - bullets
 	for bullet in bullets:
 		for p in players:
@@ -926,6 +944,6 @@ while running:
 			draw_hp_bar2(screen, p.rect.x, p.rect.y - 1, p.hp)
 
 	#reloj
-	draw_text1(screen, str(pygame.time.get_ticks()//1000), 30, 340, 16)
+	draw_text1(screen, str((pygame.time.get_ticks()- start_time)//1000), 30, 340, 16)
 
 	pygame.display.flip()

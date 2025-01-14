@@ -521,6 +521,7 @@ player2 = Player2()
 players.add(player1, player2)
 boss = Boss()
 all_sprites.add(player1, player2, boss)
+start_time = pygame.time.get_ticks()
 invo_talk_sound.play()
 
 while running:
@@ -532,6 +533,7 @@ while running:
 		players.add(player1, player2)
 		boss = Boss()
 		all_sprites.add(player1, player2, boss)
+		start_time = pygame.time.get_ticks()
 		invo_talk_sound.play()
 	
 	if game_over2:
@@ -542,6 +544,7 @@ while running:
 		players.add(player1, player2)
 		boss = Boss()
 		all_sprites.add(player1, player2, boss)
+		start_time = pygame.time.get_ticks()
 		invo_talk_sound.play()
 
 	if game_over5:
@@ -639,6 +642,6 @@ while running:
 			draw_hp_bar2(screen, p.rect.x, p.rect.y - 1, p.hp)
 
 	#reloj
-	draw_text1(screen, str(pygame.time.get_ticks()//1000), 30, 340, 16)
+	draw_text1(screen, str((pygame.time.get_ticks() - start_time)//1000), 30, 340, 16)
 
 	pygame.display.flip()
