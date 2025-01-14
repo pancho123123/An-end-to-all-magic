@@ -97,7 +97,18 @@ class Player1(Player):
 			if now - self.start_time >= 4000:
 				self.counter = True
 				self.jump_counter = True
-
+		if self.drag:
+			if now - self.start_time2 <= 1000:
+				if self.drag_dir == 1:
+					self.rect.y += 4
+				elif self.drag_dir == 2:
+					self.rect.x -= 4
+				elif self.drag_dir == 3:
+					self.rect.y -= 4
+				else:
+					self.rect.x += 4
+			else:
+				self.drag = False
 		if self.mana < 0:
 			self.mana = 0
 		if self.mana > 100:
@@ -111,15 +122,16 @@ class Player1(Player):
 		self.speed_x = 0
 		self.speed_y = 0
 		keystate = pygame.key.get_pressed()
-		if keystate[pygame.K_a]:
-			self.speed_x = -4
-		if keystate[pygame.K_d]:
-			self.speed_x = 4
-		self.rect.x += self.speed_x
-		if keystate[pygame.K_w]:
-			self.speed_y = -4
-		if keystate[pygame.K_s]:
-			self.speed_y = 4
+		if not self.drag:
+			if keystate[pygame.K_a]:
+				self.speed_x = -4
+			if keystate[pygame.K_d]:
+				self.speed_x = 4
+			self.rect.x += self.speed_x
+			if keystate[pygame.K_w]:
+				self.speed_y = -4
+			if keystate[pygame.K_s]:
+				self.speed_y = 4
 		if keystate[pygame.K_a] and not keystate[pygame.K_w] and not keystate[pygame.K_s]:
 			self.dir_num = 7
 		if keystate[pygame.K_w] and not keystate[pygame.K_a] and not keystate[pygame.K_d]:
@@ -163,6 +175,18 @@ class Player2(Player):
 			if now - self.start_time >= 4000:
 				self.counter = True
 				self.jump_counter = True
+		if self.drag:
+			if now - self.start_time2 <= 1000:
+				if self.drag_dir == 1:
+					self.rect.y += 4
+				elif self.drag_dir == 2:
+					self.rect.x -= 4
+				elif self.drag_dir == 3:
+					self.rect.y -= 4
+				else:
+					self.rect.x += 4
+			else:
+				self.drag = False
 		if self.mana < 0:
 			self.mana = 0
 		if self.mana > 100:
@@ -175,15 +199,16 @@ class Player2(Player):
 		self.speed_x = 0
 		self.speed_y = 0
 		keystate = pygame.key.get_pressed()
-		if keystate[pygame.K_LEFT]:
-			self.speed_x = -4
-		if keystate[pygame.K_RIGHT]:
-			self.speed_x = 4
-		self.rect.x += self.speed_x
-		if keystate[pygame.K_UP]:
-			self.speed_y = -4
-		if keystate[pygame.K_DOWN]:
-			self.speed_y = 4
+		if not self.drag:
+			if keystate[pygame.K_LEFT]:
+				self.speed_x = -4
+			if keystate[pygame.K_RIGHT]:
+				self.speed_x = 4
+			self.rect.x += self.speed_x
+			if keystate[pygame.K_UP]:
+				self.speed_y = -4
+			if keystate[pygame.K_DOWN]:
+				self.speed_y = 4
 		self.rect.y += self.speed_y
 		if keystate[pygame.K_LEFT] and not keystate[pygame.K_UP] and not keystate[pygame.K_DOWN]:
 			self.dir_num = 7
@@ -228,7 +253,18 @@ class Player3(Player):
 			if now - self.start_time >= 4000:
 				self.counter = True
 				self.jump_counter = True
-
+		if self.drag:
+			if now - self.start_time2 <= 1000:
+				if self.drag_dir == 1:
+					self.rect.y += 4
+				elif self.drag_dir == 2:
+					self.rect.x -= 4
+				elif self.drag_dir == 3:
+					self.rect.y -= 4
+				else:
+					self.rect.x += 4
+			else:
+				self.drag = False
 		if self.mana < 0:
 			self.mana = 0
 		if self.mana > 100:
@@ -242,15 +278,16 @@ class Player3(Player):
 		self.speed_x = 0
 		self.speed_y = 0
 		keystate = pygame.key.get_pressed()
-		if keystate[pygame.K_f]:
-			self.speed_x = -4
-		if keystate[pygame.K_h]:
-			self.speed_x = 4
-		self.rect.x += self.speed_x
-		if keystate[pygame.K_t]:
-			self.speed_y = -4
-		if keystate[pygame.K_g]:
-			self.speed_y = 4
+		if not self.drag:
+			if keystate[pygame.K_f]:
+				self.speed_x = -4
+			if keystate[pygame.K_h]:
+				self.speed_x = 4
+			self.rect.x += self.speed_x
+			if keystate[pygame.K_t]:
+				self.speed_y = -4
+			if keystate[pygame.K_g]:
+				self.speed_y = 4
 		if keystate[pygame.K_f] and not keystate[pygame.K_t] and not keystate[pygame.K_g]:
 			self.dir_num = 7
 		if keystate[pygame.K_t] and not keystate[pygame.K_f] and not keystate[pygame.K_h]:
@@ -294,7 +331,18 @@ class Player4(Player):
 			if now - self.start_time >= 4000:
 				self.counter = True
 				self.jump_counter = True
-
+		if self.drag:
+			if now - self.start_time2 <= 1000:
+				if self.drag_dir == 1:
+					self.rect.y += 4
+				elif self.drag_dir == 2:
+					self.rect.x -= 4
+				elif self.drag_dir == 3:
+					self.rect.y -= 4
+				else:
+					self.rect.x += 4
+			else:
+				self.drag = False
 		if self.mana < 0:
 			self.mana = 0
 		if self.mana > 100:
@@ -308,15 +356,16 @@ class Player4(Player):
 		self.speed_x = 0
 		self.speed_y = 0
 		keystate = pygame.key.get_pressed()
-		if keystate[pygame.K_j]:
-			self.speed_x = -4
-		if keystate[pygame.K_l]:
-			self.speed_x = 4
-		self.rect.x += self.speed_x
-		if keystate[pygame.K_i]:
-			self.speed_y = -4
-		if keystate[pygame.K_k]:
-			self.speed_y = 4
+		if not self.drag:
+			if keystate[pygame.K_j]:
+				self.speed_x = -4
+			if keystate[pygame.K_l]:
+				self.speed_x = 4
+			self.rect.x += self.speed_x
+			if keystate[pygame.K_i]:
+				self.speed_y = -4
+			if keystate[pygame.K_k]:
+				self.speed_y = 4
 		if keystate[pygame.K_j] and not keystate[pygame.K_i] and not keystate[pygame.K_k]:
 			self.dir_num = 7
 		if keystate[pygame.K_i] and not keystate[pygame.K_j] and not keystate[pygame.K_l]:
