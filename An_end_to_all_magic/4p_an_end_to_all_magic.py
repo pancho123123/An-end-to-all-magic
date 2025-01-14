@@ -102,7 +102,7 @@ class Player1(Player):
 				self.counter = True
 				self.jump_counter = True
 		if self.drag:
-			if now - self.start_time2 <= 1000:
+			if now - self.start_time2 <= 700:
 				if self.drag_dir == 1:
 					self.rect.y += 4
 				elif self.drag_dir == 2:
@@ -180,7 +180,7 @@ class Player2(Player):
 				self.counter = True
 				self.jump_counter = True
 		if self.drag:
-			if now - self.start_time2 <= 1000:
+			if now - self.start_time2 <= 700:
 				if self.drag_dir == 1:
 					self.rect.y += 4
 				elif self.drag_dir == 2:
@@ -258,7 +258,7 @@ class Player3(Player):
 				self.counter = True
 				self.jump_counter = True
 		if self.drag:
-			if now - self.start_time2 <= 1000:
+			if now - self.start_time2 <= 700:
 				if self.drag_dir == 1:
 					self.rect.y += 4
 				elif self.drag_dir == 2:
@@ -336,7 +336,7 @@ class Player4(Player):
 				self.counter = True
 				self.jump_counter = True
 		if self.drag:
-			if now - self.start_time2 <= 1000:
+			if now - self.start_time2 <= 700:
 				if self.drag_dir == 1:
 					self.rect.y += 4
 				elif self.drag_dir == 2:
@@ -941,7 +941,7 @@ while running:
 	for p in players:
 		if p.hp > 0:
 			draw_hp_bar(screen, p.rect.x, p.rect.y - 10, p.hp)
-			draw_hp_bar2(screen, p.rect.x, p.rect.y - 1, p.hp)
+			draw_hp_bar2(screen, p.rect.x, p.rect.y - 1, p.mana)
 
 	#reloj
 	draw_text1(screen, str((pygame.time.get_ticks()- start_time)//1000), 30, 340, 16)
