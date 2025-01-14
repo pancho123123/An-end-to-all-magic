@@ -9,10 +9,8 @@ HEIGHT = 700
 BLACK = (0, 0, 0)
 WHITE = ( 255, 255, 255)
 GREEN = (0, 255, 0)
-# RED = ( 255, 0, 0)
 BLUE = (0,0,255)
-# PLOMO = (122,122,122)
-# BROWN = (50,20,30)
+
 
 pygame.init()
 pygame.mixer.init()
@@ -185,13 +183,13 @@ class Player2(Player):
 		if self.drag:
 			if now - self.start_time2 <= 1000:
 				if self.drag_dir == 1:
-					self.rect.y += 5
+					self.rect.y += 4
 				elif self.drag_dir == 2:
-					self.rect.x -= 5
+					self.rect.x -= 4
 				elif self.drag_dir == 3:
-					self.rect.y -= 5
+					self.rect.y -= 4
 				else:
-					self.rect.x += 5
+					self.rect.x += 4
 			else:
 				self.drag = False
 		if self.mana < 0:
@@ -424,7 +422,9 @@ class Bullet(pygame.sprite.Sprite):
 		self.rect = self.image.get_rect()
 		self.rect.y = y
 		self.rect.centerx = x
-		self.speed = 7
+		self.speed = 6
+		self.counter_p1 = True
+		self.counter_p2 = True
 		
 
 	def update(self):
@@ -598,17 +598,34 @@ while running:
 	for bullet in bullets:
 		for p in players:
 			if pygame.sprite.collide_rect(bullet, p):
-				if bullet.n == 1:
-					p.drag_dir = 1
-				elif bullet.n == 2:
-					p.drag_dir = 2
-				elif bullet.n == 3:
-					p.drag_dir = 3
-				else:
-					p.drag_dir = 4
-				p.drag = True
-				p.start_time2 = pygame.time.get_ticks()
-				p.hp -= 8
+				if bullet.counter_p1:
+					if p == player1:
+						bullet.counter_p1 = False
+						if bullet.n == 1:
+							p.drag_dir = 1
+						elif bullet.n == 2:
+							p.drag_dir = 2
+						elif bullet.n == 3:
+							p.drag_dir = 3
+						else:
+							p.drag_dir = 4
+						p.drag = True
+						p.start_time2 = pygame.time.get_ticks()
+						p.hp -= 8
+				if bullet.counter_p2:
+					if p == player2:
+						bullet.counter_p2 = False
+						if bullet.n == 1:
+							p.drag_dir = 1
+						elif bullet.n == 2:
+							p.drag_dir = 2
+						elif bullet.n == 3:
+							p.drag_dir = 3
+						else:
+							p.drag_dir = 4
+						p.drag = True
+						p.start_time2 = pygame.time.get_ticks()
+						p.hp -= 8
 
 	all_sprites.update()
 

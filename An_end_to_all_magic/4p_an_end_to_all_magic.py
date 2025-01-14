@@ -524,7 +524,11 @@ class Bullet(pygame.sprite.Sprite):
 		self.rect = self.image.get_rect()
 		self.rect.y = y
 		self.rect.centerx = x
-		self.speed = 7
+		self.speed = 6
+		self.counter_p1 = True
+		self.counter_p2 = True
+		self.counter_p3 = True
+		self.counter_p4 = True
 		
 
 	def update(self):
@@ -804,15 +808,62 @@ while running:
 	for bullet in bullets:
 		for p in players:
 			if pygame.sprite.collide_rect(bullet, p):
-				if bullet.n == 1:
-					p.rect.y += 200
-				elif bullet.n == 2:
-					p.rect.x -= 200
-				elif bullet.n == 3:
-					p.rect.y -= 200
-				else:
-					p.rect.x += 200
-				p.hp -= 10
+				if bullet.counter_p1:
+					if p == player1:
+						bullet.counter_p1 = False
+						if bullet.n == 1:
+							p.drag_dir = 1
+						elif bullet.n == 2:
+							p.drag_dir = 2
+						elif bullet.n == 3:
+							p.drag_dir = 3
+						else:
+							p.drag_dir = 4
+						p.drag = True
+						p.start_time2 = pygame.time.get_ticks()
+						p.hp -= 8
+				if bullet.counter_p2:
+					if p == player2:
+						bullet.counter_p2 = False
+						if bullet.n == 1:
+							p.drag_dir = 1
+						elif bullet.n == 2:
+							p.drag_dir = 2
+						elif bullet.n == 3:
+							p.drag_dir = 3
+						else:
+							p.drag_dir = 4
+						p.drag = True
+						p.start_time2 = pygame.time.get_ticks()
+						p.hp -= 8
+				if bullet.counter_p3:
+					if p == player3:
+						bullet.counter_p3 = False
+						if bullet.n == 1:
+							p.drag_dir = 1
+						elif bullet.n == 2:
+							p.drag_dir = 2
+						elif bullet.n == 3:
+							p.drag_dir = 3
+						else:
+							p.drag_dir = 4
+						p.drag = True
+						p.start_time2 = pygame.time.get_ticks()
+						p.hp -= 8
+				if bullet.counter_p4:
+					if p == player4:
+						bullet.counter_p4 = False
+						if bullet.n == 1:
+							p.drag_dir = 1
+						elif bullet.n == 2:
+							p.drag_dir = 2
+						elif bullet.n == 3:
+							p.drag_dir = 3
+						else:
+							p.drag_dir = 4
+						p.drag = True
+						p.start_time2 = pygame.time.get_ticks()
+						p.hp -= 8
 
 	all_sprites.update()
 
