@@ -840,16 +840,16 @@ while running:
 				else:
 					pass
 
-	if player1.hp <= 0 or player1.rect.left > 1250 or player1.rect.right < 300 or player1.rect.bottom < 100 or player1.rect.top > 530:
+	if player1.hp <= 0 or player1.rect.left > 1250 or player1.rect.right < 350 or player1.rect.bottom < 100 or player1.rect.top > 530:
 		player1.kill()
 		
-	if player2.hp <= 0 or player2.rect.left > 1250 or player2.rect.right < 300 or player2.rect.bottom < 100 or player2.rect.top > 530:
+	if player2.hp <= 0 or player2.rect.left > 1250 or player2.rect.right < 350 or player2.rect.bottom < 100 or player2.rect.top > 530:
 		player2.kill()
 
-	if player3.hp <= 0 or player3.rect.left > 1250 or player3.rect.right < 300 or player3.rect.bottom < 100 or player3.rect.top > 530:
+	if player3.hp <= 0 or player3.rect.left > 1250 or player3.rect.right < 350 or player3.rect.bottom < 100 or player3.rect.top > 530:
 		player3.kill()
 
-	if player4.hp <= 0 or player4.rect.left > 1250 or player4.rect.right < 300 or player4.rect.bottom < 100 or player4.rect.top > 530:
+	if player4.hp <= 0 or player4.rect.left > 1250 or player4.rect.right < 350 or player4.rect.bottom < 100 or player4.rect.top > 530:
 		player4.kill()
 
 	if len(players) == 1:

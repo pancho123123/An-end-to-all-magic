@@ -103,13 +103,13 @@ class Player1(Player):
 		if self.drag:
 			if now - self.start_time2 <= 700:
 				if self.drag_dir == 1:
-					self.rect.y += 5
+					self.rect.y += 4
 				elif self.drag_dir == 2:
-					self.rect.x -= 5
+					self.rect.x -= 4
 				elif self.drag_dir == 3:
-					self.rect.y -= 5
+					self.rect.y -= 4
 				else:
-					self.rect.x += 5
+					self.rect.x += 4
 			else:
 				self.drag = False
 		
@@ -518,6 +518,7 @@ bullets = pygame.sprite.Group()
 player1 = Player1()
 player2 = Player2()
 
+
 players.add(player1, player2)
 boss = Boss()
 all_sprites.add(player1, player2, boss)
@@ -587,12 +588,12 @@ while running:
 				else:
 					pass
 
-	if player1.hp <= 0 or player1.rect.left > 1250 or player1.rect.right < 300 or player1.rect.bottom < 100 or player1.rect.top > 530:
+	if player1.hp <= 0 or player1.rect.left > 1250 or player1.rect.right < 350 or player1.rect.bottom < 100 or player1.rect.top > 530:
 		game_over1 = True
 		player1.kill()
 		player2.kill()
 		boss.kill()
-	elif player2.hp <= 0 or player2.rect.left > 1250 or player2.rect.right < 300 or player2.rect.bottom < 100 or player2.rect.top > 530:
+	elif player2.hp <= 0 or player2.rect.left > 1250 or player2.rect.right < 350 or player2.rect.bottom < 100 or player2.rect.top > 530:
 		game_over2 = True
 		player1.kill()
 		player2.kill()
@@ -629,6 +630,7 @@ while running:
 						p.drag = True
 						p.start_time2 = pygame.time.get_ticks()
 						p.hp -= 8
+	
 
 	all_sprites.update()
 
