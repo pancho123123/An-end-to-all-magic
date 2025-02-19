@@ -9,8 +9,9 @@ HEIGHT = 700
 BLACK = (0, 0, 0)
 WHITE = ( 255, 255, 255)
 GREEN = (0, 255, 0)
-# RED = ( 255, 0, 0)
+RED = ( 255, 0, 0) 
 BLUE = (0,0,255)
+YELLOW = (255,255,0)
 # PLOMO = (122,122,122)
 # BROWN = (50,20,30)
 
@@ -38,11 +39,38 @@ def draw_hp_bar(surface, x, y, percentage):
 
 def draw_hp_bar2(surface, x, y, percentage):
 	BAR_LENGHT = 100
-	BAR_HEIGHT = 7
+	BAR_HEIGHT = 4
 	fill = (percentage / 100) * BAR_LENGHT
 	border = pygame.Rect(x, y, BAR_LENGHT, BAR_HEIGHT)
 	fill = pygame.Rect(x, y, fill, BAR_HEIGHT)
 	pygame.draw.rect(surface, BLUE, fill)
+	pygame.draw.rect(surface, BLACK, border, 1)
+
+def draw_hp_bar3(surface, x, y, percentage):
+	BAR_LENGHT = 100
+	BAR_HEIGHT = 10
+	fill = (percentage / 100) * BAR_LENGHT
+	border = pygame.Rect(x, y, BAR_LENGHT, BAR_HEIGHT)
+	fill = pygame.Rect(x, y, fill, BAR_HEIGHT)
+	pygame.draw.rect(surface, RED, fill)
+	pygame.draw.rect(surface, BLACK, border, 2)
+
+def draw_hp_bar4(surface, x, y, percentage):
+	BAR_LENGHT = 100
+	BAR_HEIGHT = 10
+	fill = (percentage / 100) * BAR_LENGHT
+	border = pygame.Rect(x, y, BAR_LENGHT, BAR_HEIGHT)
+	fill = pygame.Rect(x, y, fill, BAR_HEIGHT)
+	pygame.draw.rect(surface, BLUE, fill)
+	pygame.draw.rect(surface, BLACK, border, 2)
+
+def draw_hp_bar5(surface, x, y, percentage):
+	BAR_LENGHT = 100
+	BAR_HEIGHT = 10
+	fill = (percentage / 100) * BAR_LENGHT
+	border = pygame.Rect(x, y, BAR_LENGHT, BAR_HEIGHT)
+	fill = pygame.Rect(x, y, fill, BAR_HEIGHT)
+	pygame.draw.rect(surface, YELLOW, fill)
 	pygame.draw.rect(surface, BLACK, border, 2)
 
 class Player(pygame.sprite.Sprite):
@@ -940,8 +968,18 @@ while running:
 
 	for p in players:
 		if p.hp > 0:
-			draw_hp_bar(screen, p.rect.x, p.rect.y - 10, p.hp)
-			draw_hp_bar2(screen, p.rect.x, p.rect.y - 1, p.mana)
+			if p== player1:
+				draw_hp_bar3(screen, p.rect.x, p.rect.y - 10, p.hp)
+				draw_hp_bar2(screen, p.rect.x, p.rect.y - 1, p.mana)
+			if p== player2:
+				draw_hp_bar4(screen, p.rect.x, p.rect.y - 10, p.hp)
+				draw_hp_bar2(screen, p.rect.x, p.rect.y - 1, p.mana)
+			if p== player3:
+				draw_hp_bar5(screen, p.rect.x, p.rect.y - 10, p.hp)
+				draw_hp_bar2(screen, p.rect.x, p.rect.y - 1, p.mana)
+			if p== player4:
+				draw_hp_bar(screen, p.rect.x, p.rect.y - 10, p.hp)
+				draw_hp_bar2(screen, p.rect.x, p.rect.y - 1, p.mana)
 
 	#reloj
 	draw_text1(screen, str((pygame.time.get_ticks()- start_time)//1000), 30, 340, 16)
